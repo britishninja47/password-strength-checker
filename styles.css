@@ -17,6 +17,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 24px;
   background:
     radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.2), transparent 45%),
     radial-gradient(circle at 80% 25%, rgba(112, 198, 255, 0.22), transparent 40%),
@@ -54,7 +55,7 @@ body{
 
 .input-box input{
   width: 100%;
-  padding: 10px 2px;
+  padding: 12px 48px 12px 2px;
   font-size: 18px;
   color: #fff;
   background: transparent;
@@ -67,18 +68,105 @@ body{
   color: rgba(255, 255, 255, 0.72);
 }
 
-button{
+#strength-indicator{
+  margin-top: 14px;
+  min-height: 24px;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+#strength-indicator.visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#strength-indicator.weak{
+  color: #ff7b7b;
+}
+
+#strength-indicator.medium{
+  color: #ffd86f;
+}
+
+#strength-indicator.strong{
+  color: #78f0a0;
+}
+
+.input-box button{
   background: transparent;
   border: none;
   outline: none;
   position: absolute;
   border-radius: 50%;
   cursor: pointer;
-  top: 50%;
+  top: 38px;
+  right: 18px;
+  transform: translateY(-50%);
 
 }
-button img{
+.input-box button img{
   width: 25px;
   height: 25px;
   filter: invert(5%) brightness(100%);
+}
+
+
+/* Responsive Styles for Mobile Phone */
+
+@media (max-width: 768px){
+  .title-caption{
+    top: 12%;
+    font-size: clamp(1.35rem, 6vw, 2.1rem);
+    width: min(92vw, 520px);
+  }
+
+  .input-box{
+    width: min(100%, 520px);
+    padding: 24px 18px;
+  }
+
+  .input-box input{
+    font-size: 16px;
+  }
+
+  .input-box button{
+    right: 12px;
+  }
+}
+
+@media (max-width: 480px){
+  .container{
+    padding: 16px;
+    align-items: flex-end;
+  }
+
+  .title-caption{
+    top: 8%;
+    letter-spacing: 0.02em;
+  }
+
+  .input-box{
+    max-width: 100%;
+    border-radius: 14px;
+    padding: 20px 14px;
+    margin-bottom: 10vh;
+  }
+
+  .input-box input{
+    padding-right: 44px;
+    font-size: 15px;
+  }
+
+  #strength-indicator{
+    font-size: 0.88rem;
+  }
+
+  .input-box button img{
+    width: 22px;
+    height: 22px;
+  }
 }
